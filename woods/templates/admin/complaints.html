@@ -1,0 +1,52 @@
+{% extends 'admin/adminhome.html'  %}
+	{% block content %}
+		{% load static %}
+		<br><br><br>
+        <style>
+			table{
+				height: 55%;
+				width: 55%;
+			}
+		</style>
+        <form action="" method="post" enctype="multipart/form-data">
+        <table align="center" border="4" >
+
+            <tr>
+                
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Complaint</th>
+            </tr>
+
+        {% for i in com1 %}
+
+            <tr>
+                
+                <td>{{i.name}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.complaint}}</td>
+                <td><a href="reply/{{i.id}}">Reply</a></td>
+                <td><a href="delete/{{i.id}}" onclick="del()">Delete</a></td>
+                <!-- <td><img src="{{i.image.url}}" style="height: 50px; width: 50px;"></td>
+                <td><a href="edit/{{i.id}}">Edit</a></td>
+				<td><a href="admindelete/{{i.id}}">Delete</a></td> -->
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+
+
+    <script>
+        function del()
+        {
+            var result=confirm("Are you sure to delete..?");
+            if (result)
+            {
+                console.log("Deleted")
+            }
+
+        }
+    </script>
+    {% endblock %}

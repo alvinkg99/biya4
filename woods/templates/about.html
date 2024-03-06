@@ -1,0 +1,23 @@
+{% extends 'base.html'  %}
+	{% block content %}
+		{% load static %}
+  <!-- about section start -->
+  <div class="layout_padding about_section ">
+    <div class="container">
+      <h1 class="about_taital">About <span style="background-color: #fee421; color: #fff; padding: 0px 5px;">Us</span></h1>
+      <p class="market_text"></p>
+      <div class="about_bg">
+        <div class="row">
+          <div class="col-md-8">
+            <p class="about_long_text">Furniture refers to objects intended to support various human activities such as seating , eating, storing items, working, and sleeping. Furniture is also used to hold objects at a convenient height for work, or to store things . Furniture can be a product of design and can be considered a form of decorative art. In addition to furniture's functional role, it can serve a symbolic or religious purpose. It can be made from a vast multitude of materials, including metal, plastic, and wood. Furniture can be made using a variety of woodworking joints which often reflects the local culture.</p>
+                        <!-- <button class="about_bt">ABOUT MORE</button> -->
+          </div>
+          <div class="col-md-4">
+            <div class="table_img"><img src="{% static 'images/about-img.png' %}"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- about section end -->
+ {% endblock %}

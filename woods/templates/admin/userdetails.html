@@ -1,0 +1,31 @@
+{% extends 'admin/adminhome.html'  %}
+	{% block content %}
+		{% load static %}
+		<br><br><br>
+		<style>
+			table{
+				height: 55%;
+				width: 55%;
+			}
+		</style>
+			<table border="3" align="center">
+				<tr>
+					
+					<th>Name</th>
+					<th>Number</th>
+					<th>Email</th>
+				</tr>
+				{% for i in obj %}
+				<tr>
+					
+					<td>{{i.Name}}</td>
+					<td>{{i.Number}}</td>
+					<td>{{i.Email}}</td>
+					<!-- <td><a href="edit">Edit</a></td>
+					<td><a href="delete">Delete</a></td> -->
+				</tr>
+				{% endfor %}
+			</table>
+			
+
+    {% endblock %}

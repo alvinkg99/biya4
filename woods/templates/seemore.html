@@ -1,0 +1,55 @@
+{% extends 'base.html'  %}
+	{% block content %}
+		{% load static %}
+
+        <div class="our_furniture_section layout_padding">
+            <div class="container">
+              <h1 class="about_taital">Our <span style="background-color: #fee421; color: #fff; padding: 0px 5px;">Funitures</span></h1>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+
+          {% for i in obj %}
+          <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <span class="tag"></span>
+            <a class="cart" href="product_list/{{i.id}}"><img src="{{i.image.url}}" alt="Image" style="height:68%; width: 95%;"></a>
+              <h3 class="text-dark">{{i.name}}</h3>
+              <p class="price" style="font-size: 20px;">₹{{i.price}}</p>
+              {% if request.session.id %}
+              {% for j in request.session.id %}
+
+
+  <!-- Go to cart codes -->
+            <!-- start -->
+              {% if i.id in ca %}
+              <a href="{% url 'cart' %}"><input type="submit" value="Go to cart" style="background-color: #0d0e0e; color: rgb(247, 245, 245); padding: 10px;"></a>
+              {% else %}
+              <form action="product_list/addcart/{{i.id}}" method="post">
+              {% csrf_token %}
+              <input type="submit" value="Add to Cart" style="background-color: #0d0e0e; color: rgb(247, 245, 245); padding: 10px;" >
+              </form>
+              {% endif %}
+
+
+
+              <!-- <form action="product_list/addcart/{{i.id}}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Add to Cart" style="background-color: #0d0e0e; color: rgb(247, 245, 245); padding: 10px;" >
+              </form> -->
+
+              {% endfor %}
+              {% else %}
+                <a class="cart" href="{% url 'cart' %}"  style="background-color: #0d0e0e; color: rgb(247, 245, 245); padding: 10px;">Add to Cart</a>
+              {% endif %}
+          
+               <!-- <a class="cart" href="product_list/{{i.id}}"  style="background-color: #0d0e0e; color: rgb(247, 245, 245); padding: 10px;">More Details</a> -->
+          </div>
+          {% endfor %}
+        <!-- stop -->
+
+          </div>
+          {% endblock %}
+
+
+          

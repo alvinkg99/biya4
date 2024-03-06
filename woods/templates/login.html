@@ -1,0 +1,123 @@
+{% extends 'base.html'  %}
+	{% block head %}
+		{% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+
+    {% endblock %}
+
+
+    {% block content %} 
+      {% load static %}
+
+      
+      <div class="form-modal">
+    
+        <div class="form-toggle">
+            <button id="login-toggle" onclick="toggleLogin()">log in</button>
+            <button id="signup-toggle" onclick="toggleSignup()">sign up</button>
+        </div>
+
+       
+    
+        <div id="login-form">
+            <form method="post" action="login">
+                {% csrf_token %}
+                <input type="text" placeholder="Enter username" name="username" required/>
+                <input type="password" placeholder="Enter password" name="password" required/>
+                <br><br>
+                <div>
+                    {% if messages %}
+                        {% for msg in messages %}
+                            {% if 'mynotfnd' in msg.tags %}
+                                {{msg}}
+                            {% elif 'mynotpass' in msg.tags %}
+                                {{msg}}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <input type="submit" class="btn login" value="Login">
+                <hr/>
+    
+            </form>
+            <p><a href="{% url 'reset_password' %}">Forgotten Password</a></p>
+        </div>
+        
+        
+        
+        <div id="signup-form">
+            <form method="post" action="signup">
+                {% csrf_token %}
+                <input type="text" placeholder="Enter your name" name="name" required/>
+                <input type="text" placeholder="Enter your number" name="number" pattern="[6789][0-9]{9}" required />
+                <input type="email" placeholder="Enter your email" name="email"  required/>
+                <input type="text" placeholder="Enter username" name="username" required/>
+                <input type="password" placeholder="Create password" name="password" id="password" oninput="validatePassword()" required />
+                <div id="password-strength"></div>
+                <input type="password" placeholder="Confirm password" name="confirm" id="confirm-password" oninput="validatePassword()" required/>
+                <div id="confirm-password-message"></div>
+                <div><br>
+                    {% if messages %}
+                        {% for msg in messages %}
+                            {% if 'myusr' in msg.tags %}
+                                {{msg}}
+                            {% elif 'mymail' in msg.tags %}
+                                {{msg}}
+                            {% elif 'mypass' in msg.tags %}
+                                {{msg}}
+                            {% elif 'myph' in msg.tags %}
+                                {{msg}}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!-- <button type="submit" class="btn signup" >Sign Up</button> -->
+                <input type="submit" value="Signup" class="btn signup" id="submit-button">
+                <!-- <p>Clicking <strong>create account</strong> means that you are agree to our <a href="javascript:void(0)">terms of services</a>.</p> -->
+                <hr/>
+               
+            </form>
+        </div>
+    
+    </div>
+
+    <script>
+        function validatePassword() {
+          var password = document.getElementById("password").value;
+          var confirmPassword = document.getElementById("confirm-password").value;
+          var passwordStrength = document.getElementById("password-strength");
+          var confirmPasswordMessage = document.getElementById("confirm-password-message");
+          var submitButton = document.getElementById("submit-button");
+     
+          // Define your password conditions here
+          var regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,}/;
+     
+          // Validate password
+          if (regex.test(password)) {
+            passwordStrength.innerHTML = "Password is strong!";
+            passwordStrength.style.color = "green";
+            submitButton.disabled = false;
+     
+          } else {
+            passwordStrength.innerHTML = "Password is weak. It should contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character.";
+            passwordStrength.style.color = "red";
+            submitButton.disabled = true;
+          }
+     
+          // Validate confirmation password
+          if (confirmPassword === password) {
+            confirmPasswordMessage.innerHTML = "Passwords match!";
+            confirmPasswordMessage.style.color = "green";
+          } else {
+            confirmPasswordMessage.innerHTML = "Passwords do not match.";
+            confirmPasswordMessage.style.color = "red";
+     
+          }
+        }
+      </script>
+   
+
+    
+    {% endblock %}
+  

@@ -1,0 +1,48 @@
+{% extends 'base.html'  %}
+	{% block content %}
+		{% load static %}
+
+    <div class="container py-5">
+    <!-- <div class="col-md-8"> -->
+    <!-- <div class="card mb-4"> -->
+    <div class="card-body">
+
+      
+        {% for j,i in c1.items %}
+        
+                        
+                      <div class="row">
+                          <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                            <div class="bg-image hover-overlay hover-zoom ripple rounded">
+                            <img src="{{j.image.url}}" style="height: 100px; width: 150px;" alt="Image" class="img-fluid">
+                            </div>
+                          </div>
+                          
+                          <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                            <p><strong><b>{{j.name}}</strong></p>
+                            <p>Price: {{j.price}}</p>
+                            <p>Wood: {{j.wood}}</p>
+                            <p>Colour: {{j.colour}}</p>
+                            <a href="delwish/{{i.0}}" class="btn btn-dark height-auto btn-sm">remove</a><br>
+
+
+
+                           
+                            <form action="product_list/addcart/{{j.id}}" method="post">
+                              {% csrf_token %}
+                              <input type="submit" value="Add to Cart" class="btn btn-dark height-auto btn-sm" style="position: relative; left:80px; bottom: 28px;">
+                            </form>
+                           
+                            
+                          </div>                     
+                      </div>
+                        
+                        {% endfor %}
+ 
+
+                      </div>
+    </div>
+    </div>
+    </div>
+
+    {% endblock  %}

@@ -1,0 +1,47 @@
+{% extends 'base.html'  %}
+	{% block content %}
+		{% load static %}
+  <!-- our furniture section start -->
+  <div class="our_furniture_section layout_padding">
+    <div class="container">
+      <h1 class="about_taital">Our <span style="background-color: #fee421; color: #fff; padding: 0px 5px;">Funitures</span></h1>
+      <p class="market_text">Many Furniture's we can introduce to you and your home looks like a palace.We are selling it with factory rate.</p>
+    </div>
+  </div>
+  <div class="our_section_2">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="images_bt">
+          <div class="image_left">
+            <button class="seemore_bt" ><a href="{% url 'seemore' %}" style="color: white;">SEE MORE</button></a>
+          </div>
+          <div class="image_right">
+            <div class="image"><img src="{% static 'images/img-9.png' %} " style="height: 310px; width: 500px;"></div>
+            <div class="new_text">NEW DESIGN</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="image"><img src="{% static 'images/img-4.png' %}"></div>
+      </div>
+      <div class="col-sm-3">
+        <div class="image"><img src="{% static 'images/img-5.png' %}"></div>
+      </div>
+    </div>
+    <div class="images_section_2">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="image_6"><img src="{% static 'images/img-6.png' %}"></div>
+        </div>
+        <div class="col-sm-4">
+          <div class="image_6"><img src="{% static 'images/img-7.png' %}"></div>
+        </div>
+        <div class="col-sm-4">
+          <div class="image_6"><img src="{% static 'images/img-8.png' %}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  <!-- our furniture section end -->
+ 

@@ -1,0 +1,90 @@
+{% extends 'admin/adminhome.html'  %}
+	{% block content %}
+		{% load static %}
+        <br><br><br>
+        <form action="edit1/{{l.id}}"  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            
+
+            <div class="row" align="center" style="margin-left: 300px; ">
+                <div class="col-md-6 mb-5 mb-md-0" >
+                  
+                    <div class="form-group row" >
+                        <div class="col-md-6" >
+                          <label for="c_fname" class="text-black">Name <span class="text-danger"></span></label>
+                          <input type="text" value="{{l.name}}" name="name">
+                        </div>
+                    
+                    </div><br>
+    
+                    <div class="form-group row">
+                        <div class="col-md-6" >
+                          <label for="c_email_address" class="text-black">Price<span class="text-danger"></span></label>
+                          <input type="text" value="{{l.price}}" name="price" >
+                        </div>
+                        
+                      </div><br>
+    
+                      <div class="form-group row" >
+                        <div class="col-md-6">
+                          <label for="c_lname" class="text-black">Wood<span class="text-danger"></span></label>
+                          <input type="text" value="{{l.wood}}" name="wood" >
+                        </div>
+                      </div><br>
+
+                      <div class="form-group row" >
+                        <div class="col-md-6">
+                          <label for="c_lname" class="text-black">Colour<span class="text-danger"></span></label>
+                          <input type="text" value="{{l.colour}}" name="colour" >
+                        </div>
+                      </div><br>
+
+                      <div class="form-group row" >
+                        <div class="col-md-6">
+                          <label for="c_lname" class="text-black">Desc<span class="text-danger"></span></label>
+                          <input type="text" value="{{l.description}}"  name="desc" >
+                        </div>
+                      </div><br>
+
+                      <div class="form-group row" >
+                        <div class="col-md-7">
+                          <label for="c_lname" class="text-black">Image<span class="text-danger"></span></label>
+                          <input type="file" value="{{l.image}}" name="img">
+                        </div>
+                      </div><br>
+    
+                      <div class="form-group row">
+                        <div class="col-md-2">
+                            <button type="submit" name="save" value="save" style="background-color: #3e4141; color: rgb(247, 245, 245); padding: 10px;height: 50px; width: 60px; margin-left: 70px;">Save</button>
+                        </div>
+                      </div>      
+                 
+                </div>
+            </div>
+    
+            <!-- <table border="1" align="center">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Wood</th>
+                    <th>Colour</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                   
+                </tr>
+                <tr>
+                    <td><input type="text" value="{{l.name}}" name="name"></td>
+                    <td><input type="number" value="{{l.price}}" name="price"></td>
+                    <td><input type="text" value="{{l.wood}}" name="wood"></td>
+                    <td><input type="text" value="{{l.colour}}" name="colour"></td>
+                    <td><input type="text" value="{{l.description}}" name="desc"></td>
+                    <td><input type="file" value="{{l.image}}" name="img"></td>
+                    <td><button type="submit" name="save" value="save">Save</button></td>
+                </tr>
+            </table> -->
+        
+        </form>
+        
+
+    {% endblock %}

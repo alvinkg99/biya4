@@ -1,0 +1,62 @@
+{% extends 'base.html'  %}
+	{% block content %}
+		{% load static %}
+
+        <br><br><br><br><br>
+
+        <div class="row" align="center" style="margin-left: 300px;">
+            <div class="col-md-6 mb-5 mb-md-0" >
+              <h2 class="h3 mb-3 text-black" style="margin-right: 230px;" >Hello {{user.Name}}</h2><br>
+
+              
+              <!-- {% if pro %}
+              <div>
+                <img src="{{pro.propic.url}}" alt="" style="height: 200px; width: 200px; margin-left: 400px;">
+              </div>
+              {% else %}
+              <div>
+                <img src="{% static 'images/nopic.jpg'%} " alt="" style="height: 200px; width: 200px; margin-left: 400px;">
+              </div>
+              {% endif %} -->
+
+              
+                <div class="form-group row" >
+                    <div class="col-md-6" >
+                      <label for="c_fname" class="text-black">Name <span class="text-danger"></span></label>
+                      <input type="text" value="{{user.Name}}" readonly>
+                    </div>
+                
+                </div><br>
+
+                <div class="form-group row">
+                    <div class="col-md-6" >
+                      <label for="c_email_address" class="text-black">Email  <span class="text-danger"></span></label>
+                      <input type="text" value="{{user.Email}}" readonly>
+                    </div>
+                    
+                  </div><br>
+
+                  <div class="form-group row" >
+                    <div class="col-md-6">
+                      <label for="c_lname" class="text-black">Phone <span class="text-danger"></span></label>
+                      <input type="text" value="{{user.Number}}" readonly>
+                    </div>
+                  </div><br>
+
+                  <div class="form-group row">
+                    <div class="col-md-2">
+                      <a href="uedit"><button type="submit" class="btn btn-dark" style="height: 37px; width: 160px;">Edit Account</button></a>
+                    </div>
+                   <div class="col-md-4">
+                      <a href="ureset"><button type="submit" class="btn btn-dark" style="height: 37px; width: 200px; margin-left: 80px;">Change Passsword</button></a>
+
+                    </div>
+                    <div class="col-md-2">
+                      <a href="myorder"><button type="submit" class="btn btn-dark" style="height: 37px; width: 100px; position: relative; right: 170px; top:60px;">My Orders</button></a>
+                    </div>
+                  </div>      
+             
+            </div>
+        </div>
+
+    {% endblock %}
